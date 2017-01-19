@@ -25,6 +25,12 @@
     if (current.correspondingElement) {
       return current.correspondingElement.classList.contains(ignoreClass);
     }
+
+    if (current instanceof SVGElement) {
+      // XXX: if necessary could use className.baseVal.split(" ").includes(ignoreClass) (or a regex)
+      return false;
+    }
+
     return current.classList.contains(ignoreClass);
   };
 
